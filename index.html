@@ -16,16 +16,17 @@
   <link rel="preload" as="image" href="img/photos/foto-paisagem-1.webp" imagesrcset="img/photos/foto-paisagem-1-1280.jpg 1280w, img/photos/foto-paisagem-1.webp 2560w" imagesizes="100vw" fetchpriority="high">
 
   <!-- PENDENTE: domínio definitivo -->
-  <!-- <link rel="canonical" href="https://SEU-DOMINIO/"> -->
+  <link rel="canonical" href="https://danielhossaki.github.io/CabanaSoftGarden/">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Soft Garden Cabana Lounge">
   <meta property="og:title" content="Soft Garden Cabana Lounge — Entre a natureza. Fora do comum.">
   <meta property="og:description" content="Uma experiência contemporânea em meio ao verde.">
+
   <!-- PENDENTE: imagem de compartilhamento e URL definitiva -->
-  <!-- <meta property="og:image" content="https://SEU-DOMINIO/img/photos/logo/logo_nova.png"> -->
-  <!-- <meta property="og:url" content="https://SEU-DOMINIO/"> -->
+  <meta property="og:image" content="https://danielhossaki.github.io/CabanaSoftGarden/img/photos/logo/logo_nova.png">
+  <meta property="og:url" content="https://danielhossaki.github.io/CabanaSoftGarden/">
   <meta name="twitter:card" content="summary">
 
   <link rel="icon" href="favicon.ico" sizes="48x48 32x32 16x16">
@@ -64,15 +65,10 @@
           <li><a class="site-nav__link" href="#informacoes">Informações</a></li>
           <li><a class="site-nav__link" href="#localizacao">Localização</a></li>
         </ul>
-        <p class="site-nav__footer" aria-hidden="true">Entre a natureza. Fora do comum.</p>
       </nav>
 
       <a class="btn btn--outline btn--sm site-header__cta" href="#reservas">Reservar</a>
 
-      <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" data-nav-toggle>
-        <span class="nav-toggle__label" data-nav-toggle-label>Menu</span>
-        <span class="nav-toggle__icon" aria-hidden="true"></span>
-      </button>
     </div>
   </header>
 
@@ -428,137 +424,146 @@
         </div>
 
         <div class="info-grid">
-          <article class="info-card" data-reveal>
-            <h3 class="info-card__title">Comodidades</h3>
-            <ul class="info-card__list">
-              <li>Banheira de hidromassagem</li>
-              <li>Acesso ao lago</li>
-              <li>Wi-Fi e ar-condicionado</li>
-              <li>Cozinha com Nespresso</li>
-              <li>Churrasqueira e lareira externa</li>
+          <article class="info-card info-card--amenities" data-reveal>
+            <h3 class="info-card__title"><svg class="info-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21V11m0 5c-4.5 0-7-2.5-7-7 4.5 0 7 2.5 7 7Zm0-4c0-4.5 2.5-7 7-7 0 4.5-2.5 7-7 7Z"/></svg><span>Comodidades</span></h3>
+            <ul class="info-card__list amenities__preview">
+              <li><svg class="info-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h18v2a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5v-2Zm3 7v2m12-2v2M7 9V6a2 2 0 0 1 4 0v1m4 2V7a2 2 0 0 1 4 0"/></svg><span>Banheira de hidromassagem</span></li>
+              <li><svg class="info-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.2"/></svg><span>Acesso ao lago</span></li>
+              <li><svg class="info-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 9a10 10 0 0 1 14 0M8 12a5.7 5.7 0 0 1 8 0m-5 8h.01"/></svg><span>Wi-Fi e ar-condicionado</span></li>
+              <li><svg class="info-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 10h14v10H5zM8 10V7h8v3m-6 4h4m-2-8V4"/></svg><span>Cozinha com Nespresso</span></li>
+              <li><svg class="info-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 11h14v8H5zM8 11V8h8v3m-9 8v2m10-2v2M9 5c-1 1 1 1 0 2m5-2c-1 1 1 1 0 2"/></svg><span>Churrasqueira e lareira externa</span></li>
             </ul>
-            <a class="info-card__link" href="#comodidades" data-amenities-open>Ver todas</a>
+            <button class="info-card__amenities-button" type="button" data-amenities-open aria-haspopup="dialog" aria-controls="comodidades">
+              Mostrar todas as <span data-amenities-count>0</span> comodidades
+              <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </button>
+            <dialog class="amenities-dialog" id="comodidades" aria-labelledby="amenities-dialog-title" data-amenities>
+              <header class="amenities-dialog__header">
+                <div>
+                  <p class="amenities-dialog__eyebrow">Soft Garden Cabana Lounge</p>
+                  <h2 class="amenities-dialog__title" id="amenities-dialog-title">Todas as comodidades</h2>
+                  <p class="amenities-dialog__count"><span data-amenities-count>0</span> disponíveis<span data-amenities-unavailable-wrap hidden> · <span data-amenities-unavailable-count>0</span> não disponíveis</span></p>
+                </div>
+                <button class="amenities-dialog__close" type="button" data-amenities-close aria-label="Fechar comodidades" autofocus>
+                  <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m5 5 10 10M15 5 5 15"/></svg>
+                </button>
+              </header>
+              <div class="amenities-dialog__body">
+              <div class="amenities__grid">
+                <div class="amenities__group">
+                  <h3 class="amenities__title"><svg class="amenities__icon-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2Zm3 7v2m10-2v2M8 9V6a2 2 0 0 1 4 0v1m4 2V7a2 2 0 0 1 4 0"/></svg><span>Banheiro</span></h3>
+                  <ul class="amenities__list">
+                    <li>Banheira de hidromassagem</li>
+                    <li>Chuveiro externo</li>
+                    <li>Água quente</li>
+                    <li>Secador de cabelo</li>
+                    <li>Xampu, condicionador e sabonete</li>
+                  </ul>
+                </div>
+
+                <div class="amenities__group">
+                  <h3 class="amenities__title"><svg class="amenities__icon-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 19V8m0 7h18v4m0-4v-5a2 2 0 0 0-2-2h-6v7m-10 0V6"/></svg><span>Quarto</span></h3>
+                  <ul class="amenities__list">
+                    <li>Roupas de cama</li>
+                    <li>Cobertores e travesseiros extras</li>
+                    <li>Cortinas blackout</li>
+                    <li>Ar-condicionado</li>
+                  </ul>
+                </div>
+
+                <div class="amenities__group">
+                  <h3 class="amenities__title"><svg class="amenities__icon-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 11h16v9H4zM7 11V8h10v3m-6 4h2m-1-7V4"/></svg><span>Cozinha e refeições</span></h3>
+                  <ul class="amenities__list">
+                    <li>Cozinha equipada para preparar refeições</li>
+                    <li>Refrigerador e frigobar</li>
+                    <li>Fogão a gás e micro-ondas</li>
+                    <li>Cafeteira Nespresso e cafeteira com coador</li>
+                    <li>Café</li>
+                    <li>Liquidificador</li>
+                    <li>Vasilhas, panelas, óleo, sal e pimenta</li>
+                    <li>Pratos, copos, talheres e taças de vinho</li>
+                    <li>Mesa de jantar</li>
+                    <li>Lixeira compactadora</li>
+                  </ul>
+                </div>
+
+                <div class="amenities__group">
+                  <h3 class="amenities__title"><svg class="amenities__icon-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21V11m0 5c-4.5 0-7-2.5-7-7 4.5 0 7 2.5 7 7Zm0-4c0-4.5 2.5-7 7-7 0 4.5-2.5 7-7 7Z"/></svg><span>Área externa</span></h3>
+                  <ul class="amenities__list">
+                    <li>Na beira da água, com acesso ao lago</li>
+                    <li>Quintal gramado</li>
+                    <li>Churrasqueira, grelha e espetos</li>
+                    <li>Lareira externa</li>
+                    <li>Móveis e área de jantar externos</li>
+                    <li>Estacionamento gratuito no local</li>
+                  </ul>
+                </div>
+
+                <div class="amenities__group">
+                  <h3 class="amenities__title"><svg class="amenities__icon-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 9a10 10 0 0 1 14 0M8 12a5.7 5.7 0 0 1 8 0m-5 8h.01"/></svg><span>Entretenimento e conexão</span></h3>
+                  <ul class="amenities__list">
+                    <li>Wi-Fi e Wi-Fi portátil</li>
+                    <li>Conexão Ethernet</li>
+                    <li>TV</li>
+                    <li>Sistema de som</li>
+                    <li>Livros e jogos de tabuleiro</li>
+                  </ul>
+                </div>
+
+                <div class="amenities__group">
+                  <h3 class="amenities__title"><svg class="amenities__icon-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/></svg><span>Serviços e segurança</span></h3>
+                  <ul class="amenities__list">
+                    <li>Self check-in com cofre de chaves</li>
+                    <li>Animais de estimação permitidos</li>
+                    <li>Permitido fumar</li>
+                    <li>Proteção de janela</li>
+                    <li>Kit de primeiros socorros</li>
+                    <li>Câmera externa na entrada, voltada para a rua</li>
+                  </ul>
+                </div>
+
+                <div class="amenities__group amenities__group--off">
+                  <h3 class="amenities__title"><svg class="amenities__icon-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6m0-6-6 6"/></svg><span>Não disponível</span></h3>
+                  <ul class="amenities__list">
+                    <li>Máquina de lavar e secadora</li>
+                    <li>Itens básicos</li>
+                    <li>Aquecedor</li>
+                    <li>Detector de fumaça</li>
+                    <li>Detector de monóxido de carbono</li>
+                  </ul>
+                </div>
+              </div>
+              </div>
+            </dialog>
           </article>
 
           <article class="info-card" data-reveal="2">
-            <h3 class="info-card__title">Check-in e checkout</h3>
+            <h3 class="info-card__title"><svg class="info-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Check-in e checkout</span></h3>
             <ul class="info-card__list">
-              <li>Check-in após 17:00</li>
-              <li>Checkout até 13:00</li>
-              <li>Self check-in com cofre de chaves</li>
+              <li><svg class="info-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Check-in após 17:00</span></li>
+              <li><svg class="info-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Checkout até 13:00</span></li>
+              <li><svg class="info-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="8" cy="14" r="4"/><path d="m11 11 8-8m-3 3 3 3m-6 0 2 2"/></svg><span>Self check-in com cofre de chaves</span></li>
             </ul>
             <a class="info-card__link" href="#reservas" data-booking="inline">Ver no anúncio</a>
           </article>
 
           <article class="info-card" data-reveal>
-            <h3 class="info-card__title">Localização</h3>
+            <h3 class="info-card__title"><svg class="info-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Localização</span></h3>
             <p class="info-card__text">Jardim Paraíso da Usina, em Atibaia (SP). O endereço completo é compartilhado após a confirmação da reserva.</p>
             <a class="info-card__link" href="#localizacao">Como chegar</a>
           </article>
 
           <article class="info-card" data-reveal="2">
-            <h3 class="info-card__title">Durante a estadia</h3>
+            <h3 class="info-card__title"><svg class="info-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><path d="M3.5 20v-1a5.5 5.5 0 0 1 11 0v1m1-14a3 3 0 0 1 0 6m2 2a5 5 0 0 1 3 4.6v1.4"/></svg><span>Durante a estadia</span></h3>
             <ul class="info-card__list">
-              <li>Máximo de 2 hóspedes</li>
-              <li>Aceita animais de estimação</li>
-              <li>Permitido fumar</li>
+              <li><svg class="info-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><path d="M3.5 20v-1a5.5 5.5 0 0 1 11 0v1m1-14a3 3 0 0 1 0 6m2 2a5 5 0 0 1 3 4.6v1.4"/></svg><span>Máximo de 2 hóspedes</span></li>
+              <li><svg class="info-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="7" cy="7" r="2"/><circle cx="17" cy="7" r="2"/><circle cx="4.5" cy="13" r="1.5"/><circle cx="19.5" cy="13" r="1.5"/><path d="M12 12c-2.5 0-5 3-5 5a2 2 0 0 0 2 2c1 0 1.7-.5 3-.5s2 .5 3 .5a2 2 0 0 0 2-2c0-2-2.5-5-5-5Z"/></svg><span>Aceita animais de estimação</span></li>
+              <li><svg class="info-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v9m0-9a4 4 0 0 0-4 4m4-4a4 4 0 0 1 4 4M7 12l10 6M4 21h16"/></svg><span>Permitido fumar</span></li>
             </ul>
             <a class="info-card__link" href="#reservas" data-booking="inline">Ver no anúncio</a>
           </article>
         </div>
 
-        <!-- Lista completa de comodidades (conforme o anúncio no Airbnb) -->
-        <details class="amenities" id="comodidades" data-amenities>
-          <summary class="amenities__toggle">
-            <span>Ver todas as comodidades</span>
-            <span class="amenities__icon" aria-hidden="true"></span>
-          </summary>
-
-          <div class="amenities__grid">
-            <div class="amenities__group">
-              <h4 class="amenities__title">Banheiro</h4>
-              <ul class="amenities__list">
-                <li>Banheira de hidromassagem</li>
-                <li>Chuveiro externo</li>
-                <li>Água quente</li>
-                <li>Secador de cabelo</li>
-                <li>Xampu, condicionador e sabonete</li>
-              </ul>
-            </div>
-
-            <div class="amenities__group">
-              <h4 class="amenities__title">Quarto</h4>
-              <ul class="amenities__list">
-                <li>Roupas de cama</li>
-                <li>Cobertores e travesseiros extras</li>
-                <li>Cortinas blackout</li>
-                <li>Ar-condicionado</li>
-              </ul>
-            </div>
-
-            <div class="amenities__group">
-              <h4 class="amenities__title">Cozinha e refeições</h4>
-              <ul class="amenities__list">
-                <li>Cozinha equipada para preparar refeições</li>
-                <li>Refrigerador e frigobar</li>
-                <li>Fogão a gás e micro-ondas</li>
-                <li>Cafeteira Nespresso e cafeteira com coador</li>
-                <li>Café</li>
-                <li>Liquidificador</li>
-                <li>Vasilhas, panelas, óleo, sal e pimenta</li>
-                <li>Pratos, copos, talheres e taças de vinho</li>
-                <li>Mesa de jantar</li>
-                <li>Lixeira compactadora</li>
-              </ul>
-            </div>
-
-            <div class="amenities__group">
-              <h4 class="amenities__title">Área externa</h4>
-              <ul class="amenities__list">
-                <li>Na beira da água, com acesso ao lago</li>
-                <li>Quintal gramado</li>
-                <li>Churrasqueira, grelha e espetos</li>
-                <li>Lareira externa</li>
-                <li>Móveis e área de jantar externos</li>
-                <li>Estacionamento gratuito no local</li>
-              </ul>
-            </div>
-
-            <div class="amenities__group">
-              <h4 class="amenities__title">Entretenimento e conexão</h4>
-              <ul class="amenities__list">
-                <li>Wi-Fi e Wi-Fi portátil</li>
-                <li>Conexão Ethernet</li>
-                <li>TV</li>
-                <li>Sistema de som</li>
-                <li>Livros e jogos de tabuleiro</li>
-              </ul>
-            </div>
-
-            <div class="amenities__group">
-              <h4 class="amenities__title">Serviços e segurança</h4>
-              <ul class="amenities__list">
-                <li>Self check-in com cofre de chaves</li>
-                <li>Animais de estimação permitidos</li>
-                <li>Permitido fumar</li>
-                <li>Proteção de janela</li>
-                <li>Kit de primeiros socorros</li>
-                <li>Câmera externa na entrada, voltada para a rua</li>
-              </ul>
-            </div>
-
-            <div class="amenities__group amenities__group--off">
-              <h4 class="amenities__title">Não disponível</h4>
-              <ul class="amenities__list">
-                <li>Máquina de lavar e secadora</li>
-                <li>Itens básicos</li>
-                <li>Aquecedor</li>
-                <li>Detector de fumaça</li>
-                <li>Detector de monóxido de carbono</li>
-              </ul>
-            </div>
-          </div>
-        </details>
       </div>
     </section>
 
@@ -582,6 +587,10 @@
             <iframe src="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m3!2m1!1sAlameda+Pica-Pau,+Jardim+Para%C3%ADso+da+Usina,+Atibaia+-+SP!6i15"
                     title="Mapa da região da Soft Garden Cabana Lounge, no Jardim Paraíso da Usina, em Atibaia (SP)"
                     loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <a class="location__map-fallback" href="https://www.google.com/maps/search/?api=1&amp;query=Alameda+Pica-Pau%2C+Jardim+Para%C3%ADso+da+Usina%2C+Atibaia%2C+SP" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              <span><strong>Jardim Paraíso da Usina · Atibaia, SP</strong><small>Abrir no Google Maps <span aria-hidden="true">↗</span></small></span>
+            </a>
           </figure>
 
           <dl class="location__facts">
@@ -710,13 +719,13 @@
         <nav class="footer__col" aria-label="Navegação do rodapé">
           <h2 class="footer__heading">Navegação</h2>
           <ul class="footer__list">
-            <li><a href="#experiencia">Experiência</a></li>
-            <li><a href="#galeria">Galeria</a></li>
-            <li><a href="#arquitetura">Arquitetura</a></li>
-            <li><a href="#informacoes">Informações</a></li>
-            <li><a href="#localizacao">Localização</a></li>
-            <li><a href="#reservas">Reservas</a></li>
-            <li><a href="#avaliacoes">Avaliações</a></li>
+            <li><a href="#experiencia"><svg class="footer__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg><span>Experiência</span></a></li>
+            <li><a href="#galeria"><svg class="footer__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg><span>Galeria</span></a></li>
+            <li><a href="#arquitetura"><svg class="footer__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg><span>Arquitetura</span></a></li>
+            <li><a href="#informacoes"><svg class="footer__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg><span>Informações</span></a></li>
+            <li><a href="#localizacao"><svg class="footer__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg><span>Localização</span></a></li>
+            <li><a href="#reservas"><svg class="footer__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg><span>Reservas</span></a></li>
+            <li><a href="#avaliacoes"><svg class="footer__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg><span>Avaliações</span></a></li>
           </ul>
         </nav>
 
@@ -724,11 +733,11 @@
           <h2 class="footer__heading">Contato</h2>
           <!-- Link dos itens ficam em js/script.js -> SITE_CONFIG -->
           <ul class="footer__list">
-            <li hidden><a href="#" data-contact="booking">Reservar no Airbnb</a></li>
-            <li hidden><a href="#" data-contact="holmy">Reservar na Holmy</a></li>
-            <li hidden><a href="#" data-contact="instagram">Instagram</a></li>
-            <li hidden><a href="#" data-contact="email">E-mail</a></li>
-            <li hidden><a href="#" data-contact="whatsapp">WhatsApp</a></li>
+            <li hidden><a href="#" data-contact="booking"><svg class="footer__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.001 18.275c-1.353-1.697-2.148-3.184-2.413-4.457-.263-1.027-.16-1.848.291-2.465.477-.71 1.188-1.056 2.121-1.056s1.643.345 2.12 1.063c.446.61.558 1.432.286 2.465-.291 1.298-1.085 2.785-2.412 4.458zm9.601 1.14c-.185 1.246-1.034 2.28-2.2 2.783-2.253.98-4.483-.583-6.392-2.704 3.157-3.951 3.74-7.028 2.385-9.018-.795-1.14-1.933-1.695-3.394-1.695-2.944 0-4.563 2.49-3.927 5.382.37 1.565 1.352 3.343 2.917 5.332-.98 1.085-1.91 1.856-2.732 2.333-.636.344-1.245.558-1.828.609-2.679.399-4.778-2.2-3.825-4.88.132-.345.395-.98.845-1.961l.025-.053c1.464-3.178 3.242-6.79 5.285-10.795l.053-.132.58-1.116c.45-.822.635-1.19 1.351-1.643.346-.21.77-.315 1.246-.315.954 0 1.698.558 2.016 1.007.158.239.345.557.582.953l.558 1.089.08.159c2.041 4.004 3.821 7.608 5.279 10.794l.026.025.533 1.22.318.764c.243.613.294 1.222.213 1.858zm1.22-2.39c-.186-.583-.505-1.271-.9-2.094v-.03c-1.889-4.006-3.642-7.608-5.307-10.844l-.111-.163C15.317 1.461 14.468 0 12.001 0c-2.44 0-3.476 1.695-4.535 3.898l-.081.16c-1.669 3.236-3.421 6.843-5.303 10.847v.053l-.559 1.22c-.21.504-.317.768-.345.847C-.172 20.74 2.611 24 5.98 24c.027 0 .132 0 .265-.027h.372c1.75-.213 3.554-1.325 5.384-3.317 1.829 1.989 3.635 3.104 5.382 3.317h.372c.133.027.239.027.265.027 3.37.003 6.152-3.261 4.802-6.975z"/></svg><span data-contact-label>Reservar no Airbnb</span></a></li>
+            <li hidden><a href="#" data-contact="holmy"><img class="footer__icon footer__icon--holmy" src="img/icone/holmy-logo.png" alt="" aria-hidden="true"><span data-contact-label>Reservar na Holmy</span></a></li>
+            <li hidden><a href="#" data-contact="instagram"><svg class="footer__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="2.5" y="2.5" width="11" height="11" rx="3"/><circle cx="8" cy="8" r="2.5"/><circle class="footer__icon-fill" cx="11.5" cy="4.7" r=".7"/></svg><span data-contact-label>Instagram</span></a></li>
+            <li hidden><a href="#" data-contact="email"><svg class="footer__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="2" y="3.5" width="12" height="9" rx="1"/><path d="m2.5 4.5 5.5 4 5.5-4"/></svg><span data-contact-label>E-mail</span></a></li>
+            <li hidden><a href="#" data-contact="whatsapp"><svg class="footer__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 12.5 3.7 10A5.5 5.5 0 1 1 6 12.7L3 13.5v-1Z"/><path d="M6 5.5c.2-.4.5-.4.7-.1l.6.9c.1.2.1.4-.1.6l-.4.4c.4.8 1 1.4 1.8 1.8l.4-.4c.2-.2.4-.2.6-.1l.9.6c.3.2.3.5-.1.7-.5.4-1.1.5-1.7.2A6.4 6.4 0 0 1 5.8 7.2c-.3-.6-.2-1.2.2-1.7Z"/></svg><span data-contact-label>WhatsApp</span></a></li>
           </ul>
           <p class="footer__pending muted" data-contact-fallback>Canais de contato em breve.</p>
         </div>

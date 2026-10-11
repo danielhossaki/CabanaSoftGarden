@@ -22,7 +22,7 @@ README.md
 Escolha uma das opções:
 
 1. **Abrir direto:** dê dois cliques em `index.html`. Tudo funciona, inclusive pelo protocolo `file://`.
-2. **XAMPP:** com o Apache iniciado no painel do XAMPP, acesse `http://localhost/cabana_soft_garden/`.
+2. **XAMPP:** com o Apache iniciado no painel do XAMPP, acesse `http://localhost/CabanaSoftGarden/`.
 3. **Qualquer servidor estático:** por exemplo, `npx serve .` ou `python -m http.server`, executados na pasta do projeto.
 
 > Dependências externas: a tipografia (Cormorant Garamond + Manrope), do Google Fonts, e o mapa da seção Localização (Google Maps, via `<iframe>`, carregado só quando a seção se aproxima da tela). Sem internet, o site usa fontes do sistema como alternativa. Para hospedar as fontes localmente, baixe os arquivos `.woff2`, crie uma pasta `fonts/`, declare-os com `@font-face` no início de `css/style.css` e remova os três `<link>` de fontes do `<head>`.

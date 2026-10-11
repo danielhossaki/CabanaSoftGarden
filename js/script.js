@@ -89,45 +89,6 @@
     update();
   }
 
-  /* Menu móvel
-     ------------------------------------------------------------------------ */
-  function initMobileMenu() {
-    const toggle = $('[data-nav-toggle]');
-    const nav = $('#site-nav');
-    if (!toggle || !nav) return;
-
-    const label = $('[data-nav-toggle-label]', toggle);
-    const background = [$('main'), $('.site-footer')].filter(Boolean);
-    const desktop = window.matchMedia('(min-width: 1100px)');
-
-    const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
-
-    const setOpen = (open) => {
-      toggle.setAttribute('aria-expanded', String(open));
-      if (label) label.textContent = open ? 'Fechar' : 'Menu';
-      document.body.classList.toggle('nav-open', open);
-      // Impede que o foco alcance o conteúdo coberto pelo menu
-      background.forEach((el) => { el.inert = open; });
-    };
-
-    toggle.addEventListener('click', () => setOpen(!isOpen()));
-
-    $$('a', nav).forEach((link) => {
-      link.addEventListener('click', () => { if (isOpen()) setOpen(false); });
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && isOpen()) {
-        setOpen(false);
-        toggle.focus();
-      }
-    });
-
-    desktop.addEventListener('change', (event) => {
-      if (event.matches && isOpen()) setOpen(false);
-    });
-  }
-
   /* Navegação ativa conforme a seção visível
      ------------------------------------------------------------------------ */
   function initActiveNav() {
@@ -223,7 +184,10 @@
       }
 
       link.href = contact.href;
-      if (contact.text) link.textContent = contact.text;
+      if (contact.text) {
+        const label = link.querySelector('[data-contact-label]');
+        if (label) label.textContent = contact.text;
+      }
       if (contact.external) markExternal(link);
       item.hidden = false;
       if (type !== 'booking') socialOrContactVisible = true;
@@ -405,16 +369,74 @@
     });
   }
 
-  /* Comodidades: o link "Ver todas" do cartão abre a lista completa
+  /* Comodidades: contagem automática e modal com todas as categorias
      ------------------------------------------------------------------------ */
   function initAmenities() {
     const details = $('[data-amenities]');
-    if (!details) return;
+    if (!details || typeof details.showModal !== 'function') return;
 
-    $$('[data-amenities-open]').forEach((link) => {
-      link.addEventListener('click', () => { details.open = true; });
+    const openButton = $('[data-amenities-open]');
+    const closeButton = $('[data-amenities-close]', details);
+    const count = $$('.amenities__group:not(.amenities__group--off) .amenities__list li', details).length;
+    const unavailableCount = $$('.amenities__group--off .amenities__list li', details).length;
+    const unavailableWrap = $('[data-amenities-unavailable-wrap]', details);
+
+    $$('[data-amenities-count]').forEach((el) => { el.textContent = count; });
+    const unavailableCountLabel = $('[data-amenities-unavailable-count]', details);
+    if (unavailableCountLabel) unavailableCountLabel.textContent = unavailableCount;
+    if (unavailableWrap) unavailableWrap.hidden = !unavailableCount;
+
+    let returnFocus = null;
+    let returnScrollX = 0;
+    let returnScrollY = 0;
+    let scrollRestored = true;
+
+    const open = () => {
+      if (details.open) return;
+      returnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : openButton;
+      returnScrollX = window.scrollX;
+      returnScrollY = window.scrollY;
+      details.showModal();
+      scrollRestored = false;
+      document.body.classList.add('amenities-open');
+      closeButton.focus();
+    };
+
+    const restore = () => {
+      if (scrollRestored) return;
+      scrollRestored = true;
+      document.body.classList.remove('amenities-open');
+      if (returnFocus instanceof HTMLElement && returnFocus.isConnected) {
+        returnFocus.focus({ preventScroll: true });
+      }
+      window.scrollTo(returnScrollX, returnScrollY);
+      returnFocus = null;
+    };
+
+    const close = () => {
+      if (!details.open) return;
+      details.close();
+      restore();
+    };
+
+    if (openButton) openButton.addEventListener('click', open);
+    closeButton.addEventListener('click', close);
+    details.addEventListener('click', (event) => {
+      if (event.target === details) close();
     });
-    if (window.location.hash === `#${details.id}`) details.open = true;
+    details.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        close();
+      }
+    });
+    details.addEventListener('cancel', (event) => {
+      event.preventDefault();
+      close();
+    });
+    details.addEventListener('close', restore);
+
+    if (window.location.hash === `#${details.id}`) open();
   }
 
   /* Animações de entrada
@@ -593,7 +615,6 @@
   /* Inicialização
      ------------------------------------------------------------------------ */
   initHeader();
-  initMobileMenu();
   initActiveNav();
   initBookingLinks();
   initContactLinks();
