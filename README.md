@@ -6,7 +6,7 @@ Site estático, de página única, feito com HTML5, CSS3 e JavaScript puros. Nã
 index.html        Estrutura e conteúdo
 css/style.css     Identidade visual, layout responsivo e animações
 js/script.js      Configuração (links, contatos, vídeo) e comportamentos:
-                  menu, carrossel do hero, filtros da galeria, lightbox, vídeo
+                  carrossel do hero, filtros da galeria, lightbox, vídeo
 favicon.ico       Ícone da aba do navegador
 img/photos/       Fotografias otimizadas usadas no site
 img/icone/        Monograma "SG" e ícones (apple-touch-icon, 512 px)
@@ -35,7 +35,7 @@ Na ordem em que aparecem:
 
 | Seção | Âncora | Observações |
 |---|---|---|
-| Hero | `#inicio` | Carrossel automático com 3 fotos (troca a cada 6 s), título, subtítulo e botões |
+| Hero | `#inicio` | Carrossel automático com 3 fotos (troca a cada 6 s), conteúdo centralizado, dois botões de mesmo tamanho e grafismo de arcos; layout adaptado à largura e à altura da tela |
 | Experiência | `#experiencia` | Texto de apresentação, foto e 6 destaques |
 | Vídeo | `#video` | Vídeo de apresentação (1min05) com capa e botão "Assistir ao vídeo" |
 | Galeria | `#galeria` | Abas por ambiente, "Ver mais fotografias" e visualização em tela cheia |
@@ -46,7 +46,7 @@ Na ordem em que aparecem:
 | Avaliações | `#avaliacoes` | Nota do Airbnb, notas por categoria e depoimentos |
 | Rodapé | — | Navegação, contatos e cidade |
 
-O menu completo do cabeçalho aparece a partir de 1100 px de largura; abaixo disso, ele é acessado pelo botão "Menu".
+A navegação completa do cabeçalho aparece a partir de 1250 px. Em telas menores, o cabeçalho mantém apenas a marca e o botão "Reservar".
 
 ---
 
@@ -235,6 +235,6 @@ No código, cada item pendente está marcado com o comentário `PENDENTE` (procu
 ## Acessibilidade e comportamento
 
 - Estrutura semântica (`header`, `nav`, `main`, `section`, `article`, `footer`), com um único `h1`.
-- Link "Pular para o conteúdo", foco visível em todos os elementos interativos e menu móvel com `aria-expanded`. Com o menu aberto, a tecla Esc o fecha e o conteúdo ao fundo fica inacessível ao foco (`inert`).
+- Link "Pular para o conteúdo" e foco visível em todos os elementos interativos. Em telas menores, o cabeçalho mostra apenas a marca e o botão "Reservar"; o modal de comodidades pode ser fechado pela tecla Esc e mantém o foco controlado.
 - As animações (carrossel, entrada das seções, título de Reservas) respeitam `prefers-reduced-motion`: quando o visitante prefere menos movimento, o conteúdo aparece sem transições e o carrossel não troca sozinho.
 - Sem JavaScript, todo o conteúdo continua visível e navegável: todas as fotos da galeria aparecem e o hero mostra a primeira foto.

@@ -446,6 +446,8 @@
     if (!items.length || prefersReducedMotion || !('IntersectionObserver' in window)) return;
 
     document.documentElement.classList.add('has-reveal');
+    const visibleItems = new Set();
+    const pendingReveals = new Map();
 
     // Fotos: a "cortina" só abre quando a foto já chegou, para a animação ser vista
     // com a imagem (e não abrir um quadro vazio). Limite de espera: 2,5 s.
@@ -453,20 +455,79 @@
       const img = el.dataset.reveal === 'media' ? $('img', el) : null;
       if (!img) { el.classList.add('is-visible'); return; }
       let shown = false;
-      const show = () => { if (!shown) { shown = true; el.classList.add('is-visible'); } };
+      const show = () => {
+        if (shown || !visibleItems.has(el)) return;
+        shown = true;
+        el.classList.add('is-visible');
+        const timeout = pendingReveals.get(el);
+        if (timeout) clearTimeout(timeout);
+        pendingReveals.delete(el);
+      };
       whenLoaded(img, show);
-      setTimeout(show, 2500);
+      pendingReveals.set(el, setTimeout(show, 2500));
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        reveal(entry.target);
-        observer.unobserve(entry.target);
+        if (entry.isIntersecting) {
+          visibleItems.add(entry.target);
+          reveal(entry.target);
+        } else {
+          visibleItems.delete(entry.target);
+          const timeout = pendingReveals.get(entry.target);
+          if (timeout) clearTimeout(timeout);
+          pendingReveals.delete(entry.target);
+          entry.target.classList.remove('is-visible');
+        }
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
+    }, { rootMargin: '-8% 0px -10% 0px', threshold: 0.04 });
 
     items.forEach((item) => observer.observe(item));
+  }
+
+  /* Parallax sutil nas fotografias selecionadas */
+  function initParallax() {
+    const frames = $$('[data-parallax]');
+    if (!frames.length || prefersReducedMotion || !('IntersectionObserver' in window)) return;
+
+    const active = new Set();
+    let framePending = false;
+
+    const update = () => {
+      const compact = window.innerWidth < 640;
+      active.forEach((frame) => {
+        const image = $('img', frame);
+        if (!image) return;
+        const bounds = frame.getBoundingClientRect();
+        const distance = bounds.top + bounds.height / 2 - window.innerHeight / 2;
+        const strength = Number(frame.dataset.parallax) || 12;
+        const offset = Math.max(-1, Math.min(1, distance / window.innerHeight));
+        image.style.setProperty('--parallax-y', `${compact ? 0 : -offset * strength}px`);
+      });
+      framePending = false;
+    };
+
+    const requestUpdate = () => {
+      if (framePending) return;
+      framePending = true;
+      window.requestAnimationFrame(update);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) active.add(entry.target);
+        else {
+          active.delete(entry.target);
+          const image = $('img', entry.target);
+          if (image) image.style.setProperty('--parallax-y', '0px');
+        }
+      });
+      requestUpdate();
+    }, { rootMargin: '15% 0px' });
+
+    frames.forEach((frame) => observer.observe(frame));
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate, { passive: true });
   }
 
   /* Galeria: filtro por ambiente + "Ver mais fotografias"
@@ -623,6 +684,7 @@
   initAmenities();
   initVideo();
   initReveal();
+  initParallax();
   initGallery();
   initLightbox();
   initYear();

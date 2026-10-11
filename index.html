@@ -12,9 +12,6 @@
   <!-- Marca a página como "com JavaScript" antes de desenhar, para as fotos surgirem suavemente ao carregar -->
   <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Foto principal do hero: começa a baixar antes de tudo (o navegador escolhe o tamanho certo para a tela) -->
-  <link rel="preload" as="image" href="img/photos/foto-paisagem-1.webp" imagesrcset="img/photos/foto-paisagem-1-1280.jpg 1280w, img/photos/foto-paisagem-1.webp 2560w" imagesizes="100vw" fetchpriority="high">
-
   <!-- PENDENTE: domínio definitivo -->
   <link rel="canonical" href="https://danielhossaki.github.io/CabanaSoftGarden/">
 
@@ -89,9 +86,18 @@
         <button class="hero__dot" type="button" aria-label="Mostrar foto 3 de 3"></button>
       </div>
 
+      <svg class="hero__ornament" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+        <g fill="none" stroke="currentColor">
+          <path d="M-90 300V220a100 100 0 0 1 200 0v80M65 300v-45a80 80 0 0 1 160 0v45M220 300v-95a105 105 0 0 1 210 0v95M390 300v-55a80 80 0 0 1 160 0v55M535 300v-125a125 125 0 0 1 250 0v125M735 300v-55a80 80 0 0 1 160 0v55M880 300v-95a105 105 0 0 1 210 0v95M1050 300v-45a80 80 0 0 1 160 0v45M1190 300v-105a110 110 0 0 1 220 0v105M1370 300v-45a80 80 0 0 1 160 0v45"/>
+          <path d="M0 244c180-42 294 30 470-5s287-73 466-24 323 13 504-24"/>
+        </g>
+      </svg>
+
       <div class="container hero__content">
+        <p class="hero__overline"><span>Atibaia · São Paulo</span><span>Refúgio em meio à mata</span></p>
         <h1 class="hero__title" id="hero-title">
-          Entre a natureza. <em>Fora do comum.</em>
+          <span>Entre a natureza.</span>
+          <em>Fora do comum.</em>
         </h1>
         <p class="hero__subtitle">
           Uma cabana de vidro cercada de verde em Atibaia, com hidromassagem,
@@ -99,9 +105,13 @@
         </p>
         <div class="hero__actions">
           <a class="btn btn--red" href="#reservas">Reservar</a>
-          <a class="hero__link" href="#galeria">Ver a galeria</a>
+          <a class="btn btn--outline hero__link" href="#galeria">Ver a galeria</a>
         </div>
       </div>
+      <a class="hero__scroll" href="#experiencia">
+        <span>Descubra a Soft Garden</span>
+        <svg viewBox="0 0 16 24" aria-hidden="true" focusable="false"><path d="M8 1v20m-6-6 6 6 6-6"/></svg>
+      </a>
     </section>
 
     <!-- ===================== B. A EXPERIÊNCIA ===================== -->
@@ -119,7 +129,7 @@
           e deixa tudo ainda mais acolhedor.
         </p>
 
-        <figure class="media media--portrait experience__media" data-reveal="media" style="--ph: #5b6163">
+        <figure class="media media--portrait experience__media" data-reveal="media" data-parallax="22" style="--ph: #5b6163">
           <img srcset="img/photos/experiencia-quarto-vista-jardim-800.jpg 800w, img/photos/experiencia-quarto-vista-jardim.jpg 1200w" sizes="(min-width: 900px) 45vw, (min-width: 640px) 75vw, 100vw" src="img/photos/experiencia-quarto-vista-jardim.jpg" alt="Vista da cama através das paredes de vidro, com poltrona suspensa e o jardim ao fundo" width="1200" height="1600" loading="lazy" decoding="async">
         </figure>
 
@@ -194,7 +204,7 @@
           <button class="gallery-filter__btn" type="button" data-filter="camping" aria-pressed="false">Camping</button>
         </div>
 
-        <div class="gallery" id="galeria-grid" data-gallery>          <figure class="media gallery__item gallery__item--large" data-reveal="media" data-category="exterior" style="--ph: #637174">
+        <div class="gallery" id="galeria-grid" data-gallery>                  <figure class="media gallery__item gallery__item--large" data-reveal="media" data-parallax="16" data-category="exterior" style="--ph: #637174">
             <img srcset="img/photos/galeria-cabana-entre-arvores-800.jpg 800w, img/photos/galeria-cabana-entre-arvores.jpg 1600w" sizes="(min-width: 900px) 62vw, 100vw" src="img/photos/galeria-cabana-entre-arvores.jpg" alt="Cabana de vidro e estrutura preta suspensa entre árvores e folhagens, sob céu azul" width="1600" height="1316" loading="lazy" decoding="async">
           </figure>
           <figure class="media gallery__item gallery__item--tall" data-reveal="media" data-category="exterior" style="--ph: #353c44">
@@ -367,7 +377,7 @@
 
         <div class="details">
           <article class="detail">
-            <figure class="media media--landscape" data-reveal="media" style="--ph: #55635d">
+            <figure class="media media--landscape" data-reveal="media" data-parallax="14" style="--ph: #55635d">
               <img srcset="img/photos/detalhe-vidro-quarto-800.jpg 800w, img/photos/detalhe-vidro-quarto.jpg 1448w" sizes="(min-width: 640px) 50vw, 100vw" src="img/photos/detalhe-vidro-quarto.jpg" alt="Quarto com paredes de vidro e cortinas cinza, aberto para o deck e as árvores" width="1448" height="1086" loading="lazy" decoding="async">
             </figure>
             <div class="detail__body" data-reveal>
@@ -387,7 +397,7 @@
           </article>
 
           <article class="detail">
-            <figure class="media media--tall" data-reveal="media" style="--ph: #33241e">
+            <figure class="media media--tall" data-reveal="media" data-parallax="12" style="--ph: #33241e">
               <img srcset="img/photos/detalhe-luz-vermelha-noite-800.jpg 800w, img/photos/detalhe-luz-vermelha-noite.jpg 1200w" sizes="(min-width: 640px) 50vw, 100vw" src="img/photos/detalhe-luz-vermelha-noite.jpg" alt="Cabana iluminada em vermelho à noite, refletida no lago entre a vegetação" width="1200" height="1600" loading="lazy" decoding="async">
             </figure>
             <div class="detail__body" data-reveal>
@@ -434,7 +444,7 @@
               <li><svg class="info-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 11h14v8H5zM8 11V8h8v3m-9 8v2m10-2v2M9 5c-1 1 1 1 0 2m5-2c-1 1 1 1 0 2"/></svg><span>Churrasqueira e lareira externa</span></li>
             </ul>
             <button class="info-card__amenities-button" type="button" data-amenities-open aria-haspopup="dialog" aria-controls="comodidades">
-              Mostrar todas as <span data-amenities-count>0</span> comodidades
+              <span>Mostrar todas as <span data-amenities-count>0</span> comodidades</span>
               <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
             </button>
             <dialog class="amenities-dialog" id="comodidades" aria-labelledby="amenities-dialog-title" data-amenities>
