@@ -242,14 +242,12 @@
 
   function initHeroSlides() {
     const slides = $$('[data-hero-slides] > img');
-    const dotsWrap = $('[data-hero-dots]');
     if (slides.length < 2) {
       slides.forEach(loadDeferred);
       return;
     }
 
     const INTERVAL = 6000;
-    const dots = dotsWrap ? $$('button', dotsWrap) : [];
     let current = 0;
     let timer = null;
 
@@ -268,7 +266,6 @@
       endIntro();
       current = (index + slides.length) % slides.length;
       slides.forEach((img, i) => img.classList.toggle('is-active', i === current));
-      dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === current)));
     };
 
     const stop = () => { clearInterval(timer); timer = null; };
@@ -280,14 +277,6 @@
         if (isLoaded(next)) show(current + 1);
       }, INTERVAL);
     };
-
-    dots.forEach((dot, i) => dot.addEventListener('click', () => {
-      stop();
-      loadDeferred(slides[i]);
-      show(i);
-      start();
-    }));
-    if (dotsWrap) dotsWrap.hidden = false;
 
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) stop();
